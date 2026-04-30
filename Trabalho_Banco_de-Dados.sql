@@ -31,7 +31,7 @@ on TP.CODIGO_DO_PRODUTO = INF.CODIGO_DO_PRODUTO
 inner join notas_fiscais as NF
 on NF.NUMERO = INF.NUMERO
 where year(NF.DATA_VENDA) = 2016
-group by TP.SABOR, year(NF.DATA_VENDA)
+group by year(NF.DATA_VENDA)
 order by QUANTIDADE desc;
 
 

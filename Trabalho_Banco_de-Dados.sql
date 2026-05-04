@@ -1,4 +1,4 @@
-use sucus_venda;	
+use sucos_vendas;	
 
 #Seleceionando tabelas desejadas e o ano
 select TP.SABOR, INF.QUANTIDADE,

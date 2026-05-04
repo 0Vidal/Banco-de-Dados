@@ -34,15 +34,15 @@ where year(NF.DATA_VENDA) = 2016
 group by TP.SABOR, year(NF.DATA_VENDA)
 order by QUANTIDADE DESC;
 
-#Mostra as porcentagêns que cada sabor represeta da porcentagem total.
-SELECT TP.SABOR, YEAR(NF.DATA_VENDA),
-SUM(INF.QUANTIDADE),
+#Mostra as porcentagens que cada sabor represeta da porcentagem total.
+SELECT TP.SABOR as Sabor, YEAR(NF.DATA_VENDA) as Ano,
+SUM(INF.QUANTIDADE) as Quantidade_Vendida,
 SUM(INF.QUANTIDADE) * 100.0 /
 (SELECT SUM(INF.QUANTIDADE)
 FROM itens_notas_fiscais INF
 INNER JOIN notas_fiscais NF 
 ON NF.NUMERO = INF.NUMERO
-WHERE YEAR(NF.DATA_VENDA) = 2016)
+WHERE YEAR(NF.DATA_VENDA) = 2016) as Participação
 FROM tabela_de_produtos TP
 INNER JOIN itens_notas_fiscais INF 
 ON TP.CODIGO_DO_PRODUTO = INF.CODIGO_DO_PRODUTO

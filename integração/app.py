@@ -21,4 +21,18 @@ def index():
     return render_template('index.html')
 
 @app.route('/cadastrar',methods=['POST'])
-def 
+def criar_cadastro():
+    #Receber os dados do formulário
+    cpf = request.form['cpf']
+    primeiro_nome = request.form['primeiro_nome']
+    sobrenome = request.form['sobrenome']
+    idade = request.form['idade']
+
+
+    #Criar conexão com o banco de dados
+    conexao = mysql.connector.connect(**bd_config)
+
+    #Levar instruções SQL do Python até o banco de dados
+    curso = conexao.cursor()
+
+    query = "INSERT INTO cliete1 (CPF, PRIMEIRO_NOME, SOBRENOME, IDADE) VALUES (%s,%s,%s,%s)"
